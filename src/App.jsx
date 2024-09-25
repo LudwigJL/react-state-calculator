@@ -7,15 +7,19 @@ function App() {
   const [second, setSecond] = useState('')
   const [result, setResult] = useState('')
 
-  function addFirst(num){
-    setFirst(num)
-    setResult('')}
-
+  const addFirst = (num) => setFirst(first + num)
+  const addSecond = (num) => setSecond(second + num)
   const addOperator = (op) => setOperator(op)
 
-  function addSecond(num){
-    setSecond(num)
-    setResult('')}
+  function clearFirst(){
+    setFirst('')
+    setResult('')
+  }
+
+  function clearSecond(){
+    setSecond('')
+    setResult('')
+  }
 
   function calculate(first, operator, last){
     let expression = first.toString() + operator.toString() + last.toString()
@@ -42,7 +46,7 @@ function App() {
           <button onClick = {() => addFirst('8')}>8</button>
           <button onClick = {() => addFirst('9')}>9</button>
           <button onClick = {() => addFirst('0')}>0</button>
-          <button onClick={() => addFirst('')}>Clear</button>
+          <button onClick={() => clearFirst()}>Clear</button>
         </div>
       </div>
 
@@ -69,7 +73,7 @@ function App() {
           <button  onClick = {() =>  addSecond('8')}>8</button>
           <button  onClick = {() =>  addSecond('9')}>9</button>
           <button  onClick = {() =>  addSecond('0')}>0</button>
-          <button onClick={() => addSecond('')}>Clear</button>
+          <button onClick={() => clearSecond()}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
