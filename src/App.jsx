@@ -7,6 +7,8 @@ function App() {
   const [second, setSecond] = useState('')
   const [result, setResult] = useState('')
 
+  const [store, setStore] = useState('')
+  
   const addFirst = (num) => {
     if(first === '0' && num === '0'){
       return;
@@ -31,26 +33,24 @@ function App() {
 
 
   const addOperator = (op) => setOperator(op)
-
+  
   function clearFirst(){
     setFirst('')
-    setResult('')
-  }
+    setResult('')}
 
   function clearSecond(){
     setSecond('')
-    setResult('')
-  }
+    setResult('')}
+
 
   function calculate(first, operator, last){
     let expression = first.toString() + operator.toString() + last.toString()
     let res = eval(expression)
-
-    console.log(expression)
-    console.log(res)
-
     setResult(res)
   }
+
+  function storeResult(){
+    setStore(result)  }
 
   return (
     <div className="calculator">
@@ -101,7 +101,10 @@ function App() {
         <p>{result}</p>
         <div>
           <button onClick = {() => calculate(first, operator, second)}>=</button>
+          <button onClick={() => storeResult()}>store</button>
         </div>
+        
+        <p>{store}</p>
       </div>
     </div>
   )
