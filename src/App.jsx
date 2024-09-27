@@ -7,8 +7,29 @@ function App() {
   const [second, setSecond] = useState('')
   const [result, setResult] = useState('')
 
-  const addFirst = (num) => setFirst(first + num)
-  const addSecond = (num) => setSecond(second + num)
+  const addFirst = (num) => {
+    if(first === '0' && num === '0'){
+      return;
+    }
+    else if(first === '0' && num !== '0'){
+      setFirst(num / 10)
+    } 
+    else {
+      setFirst(first + num)
+    }}
+
+  const addSecond = (num) => {
+    if(second === '0' && num === '0'){
+      return;
+    }
+    else if(second === '0' && num !== '0'){
+      setSecond(num / 10)
+    }
+    else {
+      setSecond(second + num)
+    }}
+
+
   const addOperator = (op) => setOperator(op)
 
   function clearFirst(){
